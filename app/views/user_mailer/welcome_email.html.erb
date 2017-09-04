@@ -1,0 +1,26 @@
+<section class="orders-show">
+
+  <header class="page-header">
+    <h1>Order #<%= @order.id %></h1>
+  </header>
+
+  <div class="order-summary jumbotron">
+    <h4>Your Order summary!</h4>
+    <% @order_products.each do |i| %>
+    <li><img src='<%= i[0].image %>' height="30" width="30">
+      <%= i[0].name %>
+      <%= i[1] %>
+      <%= i[2] %>
+    </li>
+    <% end %>
+
+    <br>
+    Email: <%= @order.email %>
+    <br>
+    Total: $<%=Money.new(@order.total_cents)%>
+
+  </div>
+
+  <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
+
+</section>
